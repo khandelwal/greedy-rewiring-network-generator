@@ -268,29 +268,3 @@ def anyNodeAnyNeighborProbabilisticRewiring(graph, sbk):
 
     print "num rewirings: " + repr(numRewirings)
     return graph
-
-#EXECUTION BLOCK
-
-for sbk in range(10, 11):
-
-    readGraph = UndirectedGraph('neighReg_1k/neighlistReg_' + repr(sbk))
-    rewiredGraph = readGraph
-    originalGraph = rewiredGraph
-    originalGraph.writeDegrees("degrees_" + repr(sbk) + ".txt")
-    #originalGraph.writeGraph("graph_" + repr(sbk))
-    rewiredGraph = anyNodeAnyNeighborProbabilisticRewiring(originalGraph, sbk)
-
-#readGraph.writeDegreeDist('deg_dist.txt');
-#readGraph.writeDegrees("degrees.txt");
-
-#run the greedy rewiring algorithm a few times on the same graph.
-#for x in range(1, 16):
-
-#rewiredGraph = greedyRewiring(originalGraph);
-#rewiredGraph = anyNeighborProbabilisticRewiring(originalGraph);
-
-
-#rewiredGraph.writeGraph("rewired_graph_" + repr(x) + ".txt");
-#rewiredGraph.writeGraph("rewired_graph_" + ".txt");
-#rewiredGraph.writeDegreeDist("deg_dist_" + repr(x) + ".txt");
-#rewiredGraph.writeDegrees("degrees_" + repr(x) + ".txt");
