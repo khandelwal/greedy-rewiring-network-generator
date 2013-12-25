@@ -4,14 +4,14 @@ from array import array
 
 
 class UndirectedGraph:
-    "An undirected graph"
+    """ An undirected graph """
 
     def __init__(self, inputGraphFileName):
         self.adjList = {}
         self.populateGraph(inputGraphFileName)
 
     def populateGraph(self, graphFile):
-        "Populate the graph data structure from a file"
+        """" Populate the graph data structure from a file. """
 
         f = open(graphFile)
         for line in f:
@@ -31,7 +31,7 @@ class UndirectedGraph:
             self.adjList[node] = neighborArray
 
     def writeDegrees(self, fileName):
-        "Write out the degree for each node"
+        """ Write out the degree for each node """
 
         #degFile = open(fileName,"w")
         degFile = open(fileName, 'a')
@@ -44,7 +44,7 @@ class UndirectedGraph:
         degFile.close()
 
     def writeDegreeDist(self, fileName):
-        "Write out the degree distribution to a file"
+        """ Write out the degree distribution to a file """
         degDistFile = open(fileName, "w")
 
         degreeDist = {}
@@ -62,7 +62,7 @@ class UndirectedGraph:
             degDistFile.write(repr(x[0]) + " " + repr(x[1]) + "\n")
 
     def writeGraph(self, fileName):
-        "Write the graph to fileName"
+        """ Write the graph to fileName. """
         f = open(fileName, 'w')
 
         f.write("digraph G {")
@@ -77,7 +77,7 @@ class UndirectedGraph:
         f.write("}")
 
     def printGraph(self):
-        "Print out the graph"
+        """ Print out the graph """
 
         for node in self.adjList:
             neighborArray = map(repr, self.adjList[node])
@@ -88,19 +88,19 @@ class UndirectedGraph:
         return array.buffer_info(self.adjList[node])[1]
 
     def getNeighborDegreeList(self, node):
-        "For node, get a list of (neighbor, degree) tuples"
+        """ For node, get a list of (neighbor, degree) tuples """
         neighborList = self.adjList[node]
         degreeTuples = map(self.getNodeDegreeTuple, neighborList)
         return degreeTuples
 
     def getNodeDegreeListForWholeGraph(self):
-        "For the entire graph get the (node, degree) tuples"
+        """" For the entire graph get the (node, degree) tuples """
         listOfAllNodes = self.getListOfNodes()
         degreeTuples = map(self.getNodeDegreeTuple, listOfAllNodes)
         return degreeTuples
 
     def getNodeDegreeTuple(self, node):
-        "Return (node, degree)"
+        """ Return (node, degree) """
         return (node, self.getNodeDegree(node))
 
     def getListOfNodes(self):
@@ -137,7 +137,7 @@ class UndirectedGraph:
 
     #PRIVATE METHODS
     def filterInts(self, x):
-        "Remove non-integers from a list of strings"
+        """ Remove non-integers from a list of strings """
         x = x.strip()
         if x.isdigit():
             return True
@@ -145,6 +145,6 @@ class UndirectedGraph:
             return False
 
     def convertToInt(self, x):
-        "Convert string to integer, stripping whitespace first"
+        """ Convert string to integer, stripping whitespace first """
         x = x.strip()
         return int(x)
