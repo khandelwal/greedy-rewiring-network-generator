@@ -67,8 +67,6 @@ def greedyRewiring(graph):
             #get the highest degree node for this node
             lowestDegNeighborList = graph.getNeighborDegreeList(
                 lowestDegNeighbor)
-            #highestDegNeighbor = getHighestDegreeNeighbor(
-                #lowestDegNeighborList);
 
             highestDegreeTuples = lowestDegNeighborList
             highestDegreeTuples.sort(compareNeighborTuples)
