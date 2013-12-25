@@ -1,17 +1,33 @@
-#!/usr/bin/python
-
 from array import array
+from collections import defaultdict
 
+
+def read_edge_list(edge_list_file_name):
+    """ Read an edge list file into an adjacency list (represented as a
+    dictionary in our case). """
+
+    adjList = defaultdict(list)
+    with open(edge_list_file_name, 'r') as edge_list_file:
+        for line in edge_list_file:
+            n, k = line.replace('\n', '').split()
+            n = int(n)
+            k = int(k)
+            adjList[n].append(k)
+            adjList[k].append(n)
+
+    for n, nlist in adjList.items():
+        adjList[n] = array('l', nlist)
+    return adjList
 
 class UndirectedGraph:
     """ An undirected graph """
 
-    def __init__(self, inputGraphFileName):
-        self.adjList = {}
-        self.populateGraph(inputGraphFileName)
+    def __init__(self, adjacency_dictionary):
+        self.adjList = adjacency_dictionary
 
     def populateGraph(self, graphFile):
         """ Populate the graph data structure from a file. """
+        adjList = {}
 
         f = open(graphFile)
         for line in f:
@@ -28,7 +44,8 @@ class UndirectedGraph:
             #parser, since this assumes that the file is well formed.
             #i.e. if (1,2) is in the file, then (2,1) is also in the file.
             neighborArray = array('l', neighborList)
-            self.adjList[node] = neighborArray
+            adjList[node] = neighborArray
+        return adjList
 
     def writeDegrees(self, fileName):
         """ Write out the degree for each node """
