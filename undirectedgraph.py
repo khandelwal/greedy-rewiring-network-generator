@@ -11,7 +11,7 @@ class UndirectedGraph:
         self.populateGraph(inputGraphFileName)
 
     def populateGraph(self, graphFile):
-        """" Populate the graph data structure from a file. """
+        """ Populate the graph data structure from a file. """
 
         f = open(graphFile)
         for line in f:
@@ -94,7 +94,7 @@ class UndirectedGraph:
         return degreeTuples
 
     def getNodeDegreeListForWholeGraph(self):
-        """" For the entire graph get the (node, degree) tuples """
+        """ For the entire graph get the (node, degree) tuples """
         listOfAllNodes = self.getListOfNodes()
         degreeTuples = map(self.getNodeDegreeTuple, listOfAllNodes)
         return degreeTuples
