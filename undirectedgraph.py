@@ -2,6 +2,7 @@
 
 from array import array
 
+
 class UndirectedGraph:
     "An undirected graph"
 
@@ -22,10 +23,10 @@ class UndirectedGraph:
             neighborList = neighborList.split(",")
             neighborList = filter(self.filterInts, neighborList)
             neighborList = map(self.convertToInt, neighborList)
-            
-            #Later we might have to write a more complicated 
-            #parser, since this assumes that the file is well formed. 
-            #i.e. if (1,2) is in the file, then (2,1) is also in the file. 
+
+            #Later we might have to write a more complicated
+            #parser, since this assumes that the file is well formed.
+            #i.e. if (1,2) is in the file, then (2,1) is also in the file.
             neighborArray = array('l', neighborList)
             self.adjList[node] = neighborArray
 
@@ -33,9 +34,10 @@ class UndirectedGraph:
         "Write out the degree for each node"
 
         #degFile = open(fileName,"w")
-        degFile = open(fileName,'a')
+        degFile = open(fileName, 'a')
         for node in self.adjList:
-            #degFile.write(repr(node) + " " + repr(self.getNodeDegree(node)) + "\n")
+            #degFile.write(
+            #    repr(node) + " " + repr(self.getNodeDegree(node)) + "\n")
             degFile.write(repr(self.getNodeDegree(node)) + " ")
 
             degFile.write("\n")
@@ -46,7 +48,7 @@ class UndirectedGraph:
         degDistFile = open(fileName, "w")
 
         degreeDist = {}
-        #Go through graph, building the degree distribution 
+        #Go through graph, building the degree distribution
         for node in self.adjList:
             degree = self.getNodeDegree(node)
 
@@ -73,9 +75,10 @@ class UndirectedGraph:
             #f.write(repr(node) + ": " + neighbors + "\n")
 
         f.write("}")
+
     def printGraph(self):
         "Print out the graph"
-        
+
         for node in self.adjList:
             neighborArray = map(repr, self.adjList[node])
             neighbors = ",".join(neighborArray)
@@ -96,7 +99,6 @@ class UndirectedGraph:
         degreeTuples = map(self.getNodeDegreeTuple, listOfAllNodes)
         return degreeTuples
 
-
     def getNodeDegreeTuple(self, node):
         "Return (node, degree)"
         return (node, self.getNodeDegree(node))
@@ -107,9 +109,9 @@ class UndirectedGraph:
 
     def addEdge(self, x, y):
         xList = self.adjList[x]
-        #Don't add an edge that's already there. 
-        #Don't add an edge to itself. 
-        if (xList.count(y)< 1) and (x != y):
+        #Don't add an edge that's already there.
+        #Don't add an edge to itself.
+        if (xList.count(y) < 1) and (x != y):
             xList.append(y)
             yList = self.adjList[y]
             yList.append(x)
@@ -133,7 +135,7 @@ class UndirectedGraph:
         else:
             return False
 
-    #PRIVATE METHODS 
+    #PRIVATE METHODS
     def filterInts(self, x):
         "Remove non-integers from a list of strings"
         x = x.strip()
@@ -146,4 +148,3 @@ class UndirectedGraph:
         "Convert string to integer, stripping whitespace first"
         x = x.strip()
         return int(x)
-
