@@ -71,9 +71,6 @@ class UndirectedGraph:
             neighborArray = map(repr, self.adjList[node])
             for neighbor in neighborArray:
                 f.write(repr(node) + "->" + neighbor + ";\n")
-            #neighbors = ",".join(neighborArray)
-            #f.write(repr(node) + ": " + neighbors + "\n")
-
         f.write("}")
 
     def printGraph(self):
