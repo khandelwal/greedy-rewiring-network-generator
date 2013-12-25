@@ -7,3 +7,8 @@ a new node (chosen in proportion to its degree). This process reduces the
 degree of the original destination node and increases the degree of the new
 destination node (which already had high degree), and thus progressively
 increases the variance in the degree distribution.
+
+
+See:
+https://github.com/khandelwal/greedy-rewiring-network-generator/blob/master/sample.py
+for a small illustration of how to use this code. 
