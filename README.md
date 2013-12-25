@@ -1,4 +1,4 @@
-## A Network Generator That Greedy Rewiring
+## A Network Generator That Uses Greedy Rewiring
 
 Starting with a regular random network, we use a greedy rewiring procedure to
 gradually generate an exponentially distributed network. In particular, we
